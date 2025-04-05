@@ -88,32 +88,34 @@ export async function login(
     return { message: 'Email is required.' };
   }
 
-  try {
-    const users = getUsersFromLocalStorage();
-    const user = users.find((u) => u.email === email);
+  const simulatedUser: User = {
+    id: Date.now(),
+    name: email.split('@')[0],
+    email: email,
+    role: 'User',
+  };
 
-    if (!user) {
-      console.log(`Login attempt failed: User not found - ${email}`);
-      return { message: 'Invalid email or password.' };
+  try {
+    const storedUsers = localStorage.getItem(USER_KEY);
+    const users = storedUsers ? JSON.parse(storedUsers) : [];
+    const existingUserIndex: number = users.findIndex((u: User) => u.email === email);
+
+    if (existingUserIndex === -1) {
+      users.push(simulatedUser);
+      localStorage.setItem(USER_KEY, JSON.stringify(users));
+    } else {
+      users[existingUserIndex] = { ...users[existingUserIndex], ...simulatedUser };
+      localStorage.setItem(USER_KEY, JSON.stringify(users));
     }
 
-    console.log(`Login successful: ${email}`);
-
-    const loggedInUser: User = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-    };
-
-    localStorage.setItem(USER_KEY, JSON.stringify(users));
+    console.log(`Login successful for email: ${email}`);
 
     return {
-      message: `Welcome back, ${loggedInUser.name}!`,
-      user: loggedInUser,
+      message: `Welcome, ${simulatedUser.name}!`,
+      user: simulatedUser,
     };
   } catch (error) {
-    console.error('Error during login process:', error);
+    console.error('Error during login process (simulated):', error);
     return { message: `Failed to log in due to a client error: ${error}` };
   }
 }
