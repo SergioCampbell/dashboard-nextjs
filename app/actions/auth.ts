@@ -3,13 +3,12 @@
 import { SignupFormData, FormState, validateSignupForm } from '@/lib/definitions';
 import { User } from '../interface/user.interface';
 import userList from '../data/user-data.json';
-import useCurrentUser from '@/components/hooks/useCurrentUser';
 
 const USERS_KEY = 'users';
 export const USER_KEY = 'user';
 
 function getUsersFromLocalStorage(): SignupFormData[] {
-  const { currentUser: usersJson } = useCurrentUser();
+  const usersJson = localStorage.getItem(USERS_KEY);
 
   if (usersJson) {
     return JSON.parse(usersJson);

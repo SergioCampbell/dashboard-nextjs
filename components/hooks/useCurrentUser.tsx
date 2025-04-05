@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { USER_KEY } from "@/app/actions/auth"
+import { User } from '@/app/interface/user.interface';
 
 function useCurrentUser() {
-  const [currentUser, setCurrentUser] = useState<any | null>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
