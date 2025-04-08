@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Documentation
+
+This project is a Next.js application featuring a protected dashboard with authentication, theming capabilities, and a responsive sidebar.
 
 ## Getting Started
 
@@ -16,21 +18,36 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Authentication**: Includes login and signup pages. Users must be authenticated to access the dashboard.
+- **Theming**: Supports light, dark, and custom themes (e.g., blue, green).
+- **Responsive Sidebar**: Uses React context for sidebar control and animations.
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js**: Framework for server-rendered React applications.
+- **React Context**: Manages global state for theme, user, and sidebar control.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **React Shart**: Library for creating charts.
+- **Tabler Icons**: Icon library for UI components.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Authentication
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Login and Signup**:
+  - **Login Process**: For demonstration purposes, users can log in using any email and password combination. This allows easy access to the dashboard without real authentication.
+  - **Redirection**: Users are redirected to the login page if they attempt to access the dashboard without being authenticated.
 
-## Deploy on Vercel
+## Theming
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Custom Themes**: Explain how themes are managed and switched using React context.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Components
+
+- **NavSecondary**: Describe the `NavSecondary` component and its usage.
+- **Sidebar Components**: Detail the sidebar components (`SidebarGroup`, `SidebarMenu`, etc.) and their roles.
+
+## Usage
+
+- **Running the Project**: Instructions on how to set up and run the project locally.
+- **Deployment**: Guidelines for deploying the application.
